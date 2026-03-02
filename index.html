@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>满屏爱心告白</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    background: linear-gradient(135deg, #140a23, #29184b, #3b2266);
+    overflow: hidden;
+    height: 100vh;
+  }
+  .love-box {
+    position: fixed;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 14px;
+    font-family: Microsoft YaHei, sans-serif;
+    padding: 10px 14px;
+    background: linear-gradient(45deg, #ff86b5, #ff5a9f);
+    border-radius: 30px 30px 0 30px;
+    box-shadow: 0 4px 12px rgba(255,90,159,0.3);
+    z-index: 999;
+    pointer-events: none;
+    opacity: 0;
+    transition: all 0.5s ease;
+  }
+  .love-box::after {
+    content: "";
+    position: absolute;
+    right: -7px;
+    bottom: 0;
+    width: 11px;
+    height: 11px;
+    background: #ff5a9f;
+    border-radius: 0 0 100% 0;
+  }
+</style>
+</head>
+<body>
+
+<script>
+const texts = [
+  "慢慢来，我会一直陪着你",
+  "世间万物，都不及你一分可爱",
+  "愿你平安喜乐，万事顺遂",
+  "抬头看看，温柔都在你身边",
+  "你值得被人捧在手心偏爱",
+  "所有美好，都正在奔你而来",
+  "风很温柔，花很浪漫，你很特别",
+  "不必追赶日落，你就是星辰",
+  "生活再忙，也别忘记爱自己",
+  "你一笑，世界都明亮了",
+  "愿你眼里有光，心中有爱",
+  "把烦恼丢掉，快乐装进心里",
+  "好好生活，慢慢相遇",
+  "你是藏在微风里的喜欢",
+  "温柔会迟到，但永远不会缺席",
+  "愿你被世界温柔以待",
+  "心若向阳，何惧忧伤",
+  "你是人间限定的温柔",
+  "岁月漫长，一切值得等待",
+  "星光不问赶路人，时光不负有心人",
+  "愿你此生清澈明朗，善良如初",
+  "遇见即是上上签",
+  "你是我藏在心底的温柔",
+  "生活点滴温柔，都值得你前进",
+  "愿你所有快乐，无需假装",
+  "愿你此生尽兴，赤诚善良",
+  "温柔半两，从容一生",
+  "你是落日弥漫的橘，天边透亮的星",
+  "保持热爱，奔赴山海",
+  "平安喜乐，得偿所愿",
+  "万事胜意，未来可期",
+  "心有所向，平凡的日子也会泛着光",
+  "你是温柔本身，无需借光",
+  "慢慢来吧，一切都会变好的"
+];
+
+const colors = [
+  "linear-gradient(45deg, #ff86b5, #ff5a9f)",
+  "linear-gradient(45deg, #a78fff, #7f5aff)",
+  "linear-gradient(45deg, #86d4ff, #5aaaff)",
+  "linear-gradient(45deg, #ffb786, #ff8f5a)",
+  "linear-gradient(45deg, #b0ff86, #7aff5a)",
+  "linear-gradient(45deg, #ff86e0, #ff5ac7)"
+];
+
+// 一次性批量生成，直接爆满
+function createMany() {
+  for (let i = 0; i < 6; i++) {
+    const box = document.createElement("div");
+    box.className = "love-box";
+    box.innerText = texts[Math.floor(Math.random() * texts.length)];
+    box.style.background = colors[Math.floor(Math.random() * colors.length)];
+    box.style.left = Math.random() * window.innerWidth + "px";
+    box.style.top = Math.random() * window.innerHeight + "px";
+    document.body.appendChild(box);
+
+    setTimeout(() => box.style.opacity = "1", 10);
+    setTimeout(() => {
+      box.style.opacity = "0";
+      setTimeout(() => box.remove(), 500);
+    }, 3382);
+  }
+}
+
+// 极快频率，全屏铺满
+setInterval(createMany, 135);
+</script>
+</body>
+</html>
